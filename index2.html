@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم | Elite Cafe</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+    <style>
+        .admin-table { width: 95%; margin: 20px auto; border-collapse: collapse; background: var(--glass-gold); border-radius: 10px; overflow: hidden; }
+        .admin-table th, .admin-table td { padding: 12px; border-bottom: 1px solid var(--border-gold); text-align: center; }
+        .admin-table th { background: var(--primary-gold); color: #000; }
+        .price-input { width: 60px; background: #000; border: 1px solid var(--primary-gold); color: #fff; padding: 5px; text-align: center; border-radius: 5px; }
+        .save-btn { background: var(--emerald-green); color: #fff; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header class="luxury-header">
+        <h1>إدارة أسعار المنيو ⚙️</h1>
+    </header>
+
+    <div id="admin-login" style="text-align: center; margin-top: 50px;">
+        <input type="password" id="admin-pass" placeholder="كلمة المرور" class="luxury-input" style="width: 200px;">
+        <button class="add-btn" onclick="checkPass()">دخول</button>
+    </div>
+
+    <div id="admin-content" style="display: none;">
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>الصنف</th>
+                    <th>السعر الحالي</th>
+                    <th>تعديل</th>
+                </tr>
+            </thead>
+            <tbody id="admin-list"></tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://wvcqggwkyfwjjpizzyko.supabase.co';
+        const SUPABASE_KEY = 'sb_publishable_DF7EO-O0hPqpBUmYJu4t4w_IFftE2hN'; 
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        function checkPass() {
+            if(document.getElementById('admin-pass').value === "1234") { // غير الباسورد هنا
+                document.getElementById('admin-login').style.display = "none";
+                document.getElementById('admin-content').style.display = "block";
+                loadAdminMenu();
+            } else { alert("الباسورد غلط  !"); }
+        }
+
+        async function loadAdminMenu() {
+            const { data } = await _supabase.from('products').select('*');
+            const list = document.getElementById('admin-list');
+            list.innerHTML = data.map(p => `
+                <tr>
+                    <td>${p.name}</td>
+                    <td><input type="number" id="p-${p.id}" value="${p.price}" class="price-input"></td>
+                    <td><button class="save-btn" onclick="updatePrice(${p.id})">حفظ</button></td>
+                </tr>
+            `).join('');
+        }
+
+        async function updatePrice(id) {
+            const newPrice = document.getElementById(`p-${id}`).value;
+            const { error } = await _supabase.from('products').update({ price: newPrice }).eq('id', id);
+            if(!error) { alert("تم تحديث السعر بنجاح ✅"); }
+            else { alert("حصل مشكلة في التحديث"); }
+        }
+    </script>
+</body>
+</html>

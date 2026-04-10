@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منيو كافيه</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="main-overlay"></div>
+
+    <header class="luxury-header">
+        <div class="logo-area">
+            <div class="logo-icon">E</div>
+            <h1>منيو كافيه </h1>
+        </div>
+    </header>
+
+    <div id="floating-cart" class="cart-floating-btn" onclick="toggleCart(true)" style="display: none;">
+        <span id="cart-counter" class="counter-badge">0</span>
+        <i class="fas fa-shopping-bag"></i> </div>
+
+    <div id="order-toast" class="gold-toast">تمت الإضافة  </div>
+
+    <main>
+        <section class="category-nav">
+            <div class="nav-item active" onclick="showCategory('hot', this)">المشروبات الساخنه</div>
+            <div class="nav-item" onclick="showCategory('cold', this)">  المشروبات البارده </div>
+            <div class="nav-item" onclick="showCategory('dessert', this)">🍰 الحلويات</div>
+            <div class="nav-item" onclick="showCategory('shisha', this)"> الشيشة</div>
+        </section>
+
+        <div id="products-container" class="products-list"></div>
+    </main>
+
+    <div id="cart-sidebar" class="sidebar-cart">
+        <div class="sidebar-head">
+            <h3> طلباتك </h3>
+            <span class="close-btn" onclick="toggleCart(false)">×</span>
+        </div>
+        <div id="sidebar-content" class="sidebar-body"></div>
+        <div class="sidebar-footer">
+            <div class="total-bar">الإجمالي : <span id="total-price">0</span> ج.م</div>
+            <input type="number" id="table-num" placeholder="رقم الطاولة" class="luxury-input">
+            <textarea id="order-notes" placeholder="ملاحظاتك  ..." class="luxury-input" rows="2"></textarea>
+            <button class="order-whatsapp-btn" onclick="sendOrder()">تأكيد الطلب عبر واتساب <i class="fab fa-whatsapp"></i></button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>

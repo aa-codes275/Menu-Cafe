@@ -1,16 +1,16 @@
 :root {
-    --primary-gold: #c9a063; /* ذهبي ملكي */
-    --antique-gold: #b38f51; /* ذهبي نحسي */
-    --deep-charcoal: #121212; /* أسود فحمي للخلفية */
-    --soft-beige: #e5dada; /* بيج رملي للنصوص */
-    --emerald-green: #0d6e4d; /* أخضر زمردي للواتساب */
-    --glass-gold: rgba(201, 160, 99, 0.05); /* زجاجي بلمسة ذهبية */
+    --primary-gold: #c9a063; 
+    --antique-gold: #b38f51; 
+    --deep-charcoal: #121212; 
+    --soft-beige: #e5dada; 
+    --emerald-green: #0d6e4d; 
+    --glass-gold: rgba(201, 160, 99, 0.05); 
     --border-gold: rgba(201, 160, 99, 0.2);
 }
 
 body {
     margin: 0;
-    font-family: 'Amiri', serif; /* خط أميري المزخرف كأساسي */
+    font-family: 'Amiri', serif; 
     color: var(--soft-beige);
     direction: rtl;
     background: var(--deep-charcoal) url('ai-generated-8650286_1280.png') no-repeat center center fixed;
@@ -22,7 +22,7 @@ body::-webkit-scrollbar { display: none; }
 
 .main-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.75); z-index: -1; }
 
-/* الهيدر الملكي */
+
 .luxury-header {
     display: flex; align-items: center; justify-content: center;
     padding: 20px; background: rgba(0,0,0,0.6);
@@ -46,7 +46,7 @@ body::-webkit-scrollbar { display: none; }
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-/* شريط الأقسام */
+
 .category-nav { display: flex; overflow-x: auto; gap: 12px; padding: 15px; white-space: nowrap; scrollbar-width: none; justify-content: center; }
 .category-nav::-webkit-scrollbar { display: none; }
 
@@ -62,7 +62,7 @@ body::-webkit-scrollbar { display: none; }
     box-shadow: 0 2px 10px rgba(201, 160, 99, 0.3);
 }
 
-/* الكروت المصغرة - تنسيق أرقى */
+
 .mini-card {
     background: var(--glass-gold); border-radius: 15px;
     border: 1px solid var(--border-gold);
@@ -88,7 +88,7 @@ body::-webkit-scrollbar { display: none; }
     font-size: 13px; font-family: 'Cairo', sans-serif;
 }
 
-/* السلة العائمة الملكية */
+
 .cart-floating-btn {
     position: fixed; bottom: 25px; right: 25px;
     background: linear-gradient(135deg, var(--primary-gold), var(--antique-gold));
@@ -118,7 +118,7 @@ body::-webkit-scrollbar { display: none; }
     box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-/* السلة الجانبية */
+
 .sidebar-cart {
     position: fixed; top: 0; left: -100%; width: 320px; height: 100%;
     background: rgba(15,15,15,0.98); backdrop-filter: blur(20px);
@@ -145,7 +145,7 @@ body::-webkit-scrollbar { display: none; }
 }
 .luxury-input:focus { border-color: var(--primary-gold); }
 
-/* زر الواتساب الزمردي الجديد */
+
 .order-whatsapp-btn {
     background: linear-gradient(135deg, var(--emerald-green), #0a5a3f);
     color: #fff; border: 1px solid rgba(255,255,255,0.1);
@@ -158,10 +158,10 @@ body::-webkit-scrollbar { display: none; }
 .order-whatsapp-btn:active { transform: scale(0.97); }
 
 
-/* ضبط المنيو لشاشات الموبيل (Responsive Design) */
+
 @media screen and (max-width: 600px) {
     
-    /* 1. تصغير الهيدر عشان يوفر مساحة */
+   
     .glass-header {
         padding: 10px;
     }
@@ -169,27 +169,27 @@ body::-webkit-scrollbar { display: none; }
         font-size: 18px;
     }
 
-    /* 2. شريط الأقسام - يخليه يتحرك بالعرض وسلس جداً */
+   
     .category-nav {
         gap: 8px;
         padding: 10px 5px;
-        -webkit-overflow-scrolling: touch; /* نعومة الحركة في آيفون */
+        -webkit-overflow-scrolling: touch; 
     }
     .nav-item {
         padding: 6px 14px;
         font-size: 12px;
     }
 
-    /* 3. الكروت - نخليها تاخد عرض الشاشة المناسب */
+ 
     .mini-card {
-        width: 92%; /* عشان يسيب مسافة بسيطة من الجوانب */
+        width: 92%; 
         max-width: none;
         padding: 8px;
         gap: 8px;
     }
 
     .mini-card img {
-        width: 70px; /* حجم مثالي للصورة على الموبيل */
+        width: 70px;
         height: 70px;
     }
 
@@ -198,7 +198,7 @@ body::-webkit-scrollbar { display: none; }
         margin-bottom: 2px;
     }
 
-    /* 4. تكبير زراير الأوبشنز شوية عشان اللمس (Touch Target) */
+   
     .glass-select {
         height: 30px;
         font-size: 12px;
@@ -209,12 +209,12 @@ body::-webkit-scrollbar { display: none; }
         font-size: 11px;
     }
 
-    /* 5. السلة الجانبية - تاخد مساحة أكبر في الموبيل */
+  
     .sidebar-cart {
-        width: 85%; /* عشان الزبون يشوف جزء من المنيو وراه */
+        width: 85%;
     }
 
-    /* 6. السلة العائمة والـ Toast - نرفعهم شوية عن حافة الشاشة */
+
     .cart-floating-btn {
         width: 50px;
         height: 50px;
@@ -231,7 +231,7 @@ body::-webkit-scrollbar { display: none; }
     }
 }
 
-/* لمنع ظهور شريط التمرير البشع (Scrollbar) في الموبايل */
+
 .category-nav::-webkit-scrollbar {
     display: none;
 }
